@@ -2,7 +2,10 @@
 
 namespace League\OAuth2\Client\Provider;
 
-class Strava extends IdentityProvider
+use League\OAuth2\Client\Entity\User;
+
+
+class Strava extends AbstractProvider
 {
     public $responseType = 'json';
 
