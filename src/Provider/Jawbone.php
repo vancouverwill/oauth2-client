@@ -22,8 +22,8 @@ class Jawbone extends AbstractProvider
 
     public function urlUserDetails(\League\OAuth2\Client\Token\AccessToken $token)
     {
-        // return 'https://www.strava.com/api/v3/athlete?access_token=' . $token;
-        return 'https://jawbone.com/nudge/api/v.1.1/users/' . $token;
+        $this->headers = array('Authorization' => 'Bearer ' . $token);
+        return 'https://jawbone.com/nudge/api/v.1.1/users/@me/';
     }
 
     public function userDetails($response, \League\OAuth2\Client\Token\AccessToken $token)
