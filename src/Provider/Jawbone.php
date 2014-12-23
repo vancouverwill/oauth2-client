@@ -28,8 +28,15 @@ class Jawbone extends AbstractProvider
 
     public function userDetails($response, \League\OAuth2\Client\Token\AccessToken $token)
     {
-        // This function is where we can add and modify user Details.
-        return $response;
+        $user = new User();
+
+        $user->exchangeArray([
+            'uid' => $response->data->xid,
+            'name' => $response->data->first_name . " " . $response->data->last_name,
+            'firstname' => $response->data->first_name,
+            'lastname' => $response->data->last_name,
+            'imageurl' => $response->data->image,
+        ]);
     }
 
 }
